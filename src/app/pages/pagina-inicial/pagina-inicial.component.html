@@ -1,0 +1,64 @@
+<div style="display: flex;flex-direction: row;justify-content: space-between;margin: 20px;" *ngIf="donoDoCentro">
+  <button mat-button class="buttonCadastros" (click)="openModalCadastrarCentro()">Cadastrar centro esportivo</button>
+  <h1 style="font-size: 40px;  font-weight: 600;  color: #8c2b2b;">CENTROS ESPORTIVOS</h1>
+  <button mat-button class="buttonCadastros" (click)="openModalAceitarAgendamentos()">Gerenciar requisições</button>
+</div>
+<div style="display: flex;flex-direction: row;justify-content: space-between;margin: 20px;" *ngIf="!donoDoCentro">
+  <div></div>
+  <h1 style="font-size: 40px;  font-weight: 600;  color: #8c2b2b;">CENTROS ESPORTIVOS</h1>
+  <div></div>
+</div>
+<mat-grid-list cols="4" rowHeight="600px">
+  <mat-grid-tile *ngFor="let item of dataCentroEsportivo">
+    <div style="margin-top: 50px;">
+      <mat-card class="cardCentroEsportivo">
+        <mat-card-title class="tituloCardCentro" *ngIf="donoDoCentro; else tituloPadrao">
+          <mat-icon fontIcon="delete" (click)="excluirCentroEsportivo(item.id)" matTooltip="Excluir centro esportivo" matTooltipPosition="above"></mat-icon>
+          {{ item.name }}
+          <mat-icon fontIcon="edit" (click)="openModalEditarCentro(item.id)" matTooltip="Editar centro esportivo" matTooltipPosition="above"></mat-icon>
+        </mat-card-title>
+        <ng-template #tituloPadrao>
+          <mat-card-title >
+            {{ item.name }}
+          </mat-card-title>
+        </ng-template>
+        <mat-card-content style="display: flex; flex-direction: column; width: 90%;">
+          <img src="{{item.photo_urls}}" style="height: 150px; width: auto;"/>
+          <div class="dividerCard"></div>
+          <span style="font-weight: 500;font-size: 16px; margin-left: 10px;">Informações</span>
+          <div class="linhaCardInfos" style="margin-left: 15px;">
+            <span>Telefone: {{item.contact_number}}</span>
+          </div>
+          <div class="linhaCardInfos" style="margin-left: 15px;">
+            <span *ngIf="item.parking == true; else negativaEstacionamento">Possui estacionamento</span>
+            <ng-template #negativaEstacionamento>
+              <span>Não possui estacionamento</span>
+            </ng-template>
+          </div>
+
+          <div class="linhaCardInfos" style="margin-left: 15px;">
+            <span *ngIf="item.steakhouse == true; else negativaLanchonete">Possui lanchonete</span>
+            <ng-template #negativaLanchonete>
+              <span>Não possui lanchonete</span>
+            </ng-template>
+          </div>
+
+          <div class="dividerCard"></div>
+
+          <span style="font-weight: 500;font-size: 16px; margin-left: 10px;">Endereço</span>
+          <div class="linhaCardInfos" style="flex-direction: column; margin-left: 15px;" *ngIf="item.address">
+            <span *ngIf="item.address.street">Rua: {{item.address.street}}</span>
+            <span *ngIf="item.address.street_number">Número: {{item.address.street_number}}</span>
+            <span *ngIf="item.address.city">Cidade: {{item.address.city}}</span>
+            <span *ngIf="item.address.state">Estado: {{item.address.state}}</span>
+            <span *ngIf="item.address.neighborhood">Bairro: {{item.address.neighborhood}}</span>
+            <span *ngIf="item.address.zip_code">CEP: {{item.address.zip_code}}</span>
+          </div>
+
+        </mat-card-content>
+        <button mat-button class="buttonAcessoCentro" [routerLink]="['/quadras', item.id]" >Acessar centro esportivo</button>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+

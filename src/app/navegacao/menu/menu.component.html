@@ -1,0 +1,23 @@
+<mat-toolbar class="topBar">
+	<mat-toolbar-row>
+    <span (click)="redirect()" style="color:#FFF; font-size: 22px; cursor: pointer;">Jogo certo</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button (click)="acessarLogin()" *ngIf="!logado; else deslogado" style="color:#FFF; font-size: 14px;">Login</button>
+    <ng-template #deslogado>
+      <button mat-button [matMenuTriggerFor]="menu" style="color:#FFF; font-size: 16px;">{{nomeUsuario}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="telaRelatorio" (click)="openModalGastos()">Gastos</button>
+        <button mat-menu-item *ngIf="telaRelatorio" (click)="openModalReservas()">Reservas</button>
+        <button mat-menu-item *ngIf="telaRelatorio" (click)="openModalRelatorios()">Últimos 10 agendamentos</button>
+
+        <button mat-menu-item *ngIf="relatorios" (click)="openModalGanhos()">Ganhos</button>
+        <button mat-menu-item *ngIf="relatorios" (click)="openModalAgendamentos()">Agendamentos</button>
+        <button mat-menu-item *ngIf="relatorios" (click)="openModalUsuarioRentavel()">Usuário mais rentável</button>
+
+
+        <button mat-menu-item (click)="logout()">Sair</button>
+      </mat-menu>
+    </ng-template>
+	</mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,23 @@
+<div class="estruturaLogin">
+  <mat-card class="cardLogin">
+    <div style="margin-top: 50px;">
+      <span class="tituloLogin">
+        Realize o login no sistema
+      </span>
+    </div>
+    <form [formGroup]="loginForm">
+      <div style="display: flex;flex-direction: column; margin-top: 60px;">
+        <mat-form-field class="camposLogin">
+          <mat-label>E-mail</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+        <mat-form-field class="camposLogin">
+          <mat-label>Senha</mat-label>
+            <input type="password" formControlName="password" matInput>
+        </mat-form-field>
+      </div>
+    </form>
+    <button mat-button (click)="login()" class="buttonLogin">Login</button>
+    <a class="textCadastro" (click)="linkCadastro()">Não possui uma conta? Cadastre-se</a>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+<h1 mat-dialog-title class="font-TituloModal">Agende um horário
+  <button mat-icon-button aria-label="close dialog" mat-dialog-close style="float: right; margin-top: 10px; margin-right: -15px;">
+       <mat-icon style="color: #A1A1A1;">close</mat-icon>
+  </button>
+</h1>
+
+<div mat-dialog-content style="padding-right: 0 !important; padding-left: 0 !important; width: 500px;">
+  <form [formGroup]="agendarHorario">
+    <div style="display: flex;flex-direction: column; margin-top: 20px; align-items: center; ">
+      <div style="display: flex; flex-direction: row;">
+        <mat-form-field style="width: 200px; margin-right: 20px;">
+          <mat-label>Escolha a data</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="selectedDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker (dateChange)="updateTime($event)"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="width: 200px;">
+          <mat-label>Horarios</mat-label>
+          <mat-select (selectionChange)="updateTime($event.value)">
+            <mat-option *ngFor="let hora of horarios" [value]="hora">
+              {{ hora.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra" >
+          <mat-label>Valor total</mat-label>
+            <input formControlName="amount" matInput readonly>
+            <mat-error *ngIf="agendarHorario.get('amount').invalid" class="alert alert-danger">
+              Campo obrigatório
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  </form>
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="agendamentoHorario()">Salvar</button>
+  <button mat-button mat-dialog-close>Fechar</button>
+</div>

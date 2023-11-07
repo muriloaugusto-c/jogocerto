@@ -1,0 +1,42 @@
+.estruturaLogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cardLogin{
+  height: 500px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  border: 5px solid #8C2B2B;
+  border-radius: 8px;
+}
+
+.tituloLogin{
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.camposLogin{
+  width: 350px;
+  margin-top:20px;
+}
+
+.buttonLogin{
+  width: 250px;
+  height: 45px;
+  border: 2px solid #3f51b5;
+  color:#3f51b5 !important;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.textCadastro{
+  text-decoration: underline;
+  margin-top: 15px;
+  cursor: pointer;
+  color: #3f51b5;
+}

@@ -1,0 +1,51 @@
+.mat-grid-list {
+  margin: 16px; /* Margem externa da grade de colunas e linhas */
+}
+
+mat-card {
+  margin: 8px; /* Margem entre os cards */
+}
+
+.cardCentroEsportivo{
+  height: auto;
+  display: flex;
+  align-items: center;
+  border: 5px solid #8C2B2B;
+  border-radius: 8px;
+  width: 400px;
+  height: 550px;
+}
+
+.dividerCard{
+  border:1px solid #8C2B2B;
+  margin:5px 0;
+}
+
+.linhaCardInfos{
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0;
+}
+
+.buttonAcessoCentro{
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #8C2B2B;
+}
+
+.buttonCadastros{
+  border: 2px solid #000;
+  height: 50px;
+  background-color: #8C2B2B;
+  color: #FFF;
+  border-radius: 8px;
+}
+
+.tituloCardCentro{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  margin-top: 10px;
+}

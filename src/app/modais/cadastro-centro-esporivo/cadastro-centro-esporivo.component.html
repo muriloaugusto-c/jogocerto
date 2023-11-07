@@ -1,0 +1,97 @@
+<h1 mat-dialog-title class="font-TituloModal">Cadastro de centro esportivo
+  <button mat-icon-button aria-label="close dialog" mat-dialog-close style="float: right; margin-top: 10px; margin-right: -15px;">
+       <mat-icon style="color: #A1A1A1;">close</mat-icon>
+  </button>
+</h1>
+
+<div mat-dialog-content style="padding-right: 0 !important; padding-left: 0 !important; width: 500px;">
+  <form [formGroup]="cadastroCentro">
+    <div style="display: flex;flex-direction: column; margin-top: 20px; align-items: center; ">
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Nome</mat-label>
+            <input formControlName="name" matInput>
+            <mat-error *ngIf="cadastroCentro.get('name').invalid" class="alert alert-danger">
+              Campo obrigatório
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Telefone de contato</mat-label>
+            <input formControlName="contactNumber" matInput>
+            <mat-error *ngIf="cadastroCentro.get('contactNumber').invalid" class="alert alert-danger">
+              Campo obrigatório
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <div class="form-group">
+          <label>Imagem:</label>
+          <input type="file" (change)="onFileSelected($event)" class="form-control">
+        </div>
+      </div>
+
+      <div style="display: flex;flex-direction: row;margin-right: 80px;align-items: center;">
+          <mat-label>Possui estacionamento?</mat-label>
+            <mat-checkbox formControlName="parking" class="checkbox"></mat-checkbox>
+      </div>
+
+      <div style="display: flex;flex-direction: row; align-items: center; margin-right: 117px">
+          <mat-label>Possui lanchonete?</mat-label>
+          <mat-checkbox formControlName="steakhouse" class="checkbox"></mat-checkbox>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>CEP</mat-label>
+            <input formControlName="zipCode" matInput>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Rua</mat-label>
+            <input formControlName="street" matInput>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Número</mat-label>
+            <input formControlName="streetNumber" matInput>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Estado</mat-label>
+            <input formControlName="state" matInput>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Cidade</mat-label>
+            <input formControlName="city" matInput>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex;flex-direction: row;">
+        <mat-form-field class="camposCadastroQuadra">
+          <mat-label>Bairro</mat-label>
+            <input formControlName="neighborhood" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="cadastrarCentros()">Salvar</button>
+  <button mat-button mat-dialog-close>Fechar</button>
+</div>

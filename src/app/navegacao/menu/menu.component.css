@@ -1,0 +1,7 @@
+.topBar{
+  background-color: #8C2B2B;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto
+}

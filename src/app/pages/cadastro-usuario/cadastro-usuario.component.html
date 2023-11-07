@@ -1,0 +1,116 @@
+<div class="estruturaLogin">
+  <mat-card class="cardLogin">
+    <div style="margin-top: 50px;">
+      <span class="tituloLogin">
+        Cadastre-se no sistema
+      </span>
+    </div>
+    <form (ngSubmit)="submitForm()" style="margin-top: 20px;" *ngIf="!tipoSelecionado">
+      <span style="font-size: 15px; font-weight: 500;">Para começar selecione o modelo de cadastro que você gostaria de realizar</span>
+      <div style="display: flex;flex-direction: row; margin-top: 30px; justify-content: center;">
+        <label style="padding-right: 50px;">
+          <input type="radio" [(ngModel)]="selectedOption" name="radioOption" value="padrao" class="radioButton">Usuário padrão
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="selectedOption" name="radioOption" value="dono" class="radioButton"> Dono de centro esportivo
+        </label>
+      </div>
+      <div style="display: flex;flex-direction: row; margin-top: 30px; margin-bottom: 30px; justify-content: center;">
+        <button mat-button type="submit">Avançar</button>
+      </div>
+    </form>
+
+    <form [formGroup]="cadastroLoginForm" *ngIf="tipoSelecionado">
+
+      <div style="display: flex;flex-direction: column; margin-top: 60px;">
+
+        <div style="display: flex;flex-direction: row;">
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Nome</mat-label>
+              <input formControlName="name" matInput>
+              <mat-error *ngIf="cadastroLoginForm.get('name').invalid" class="alert alert-danger">
+                Campo obrigatório
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>E-mail</mat-label>
+              <input formControlName="email" matInput cadastroLoginForm>
+              <mat-error *ngIf="cadastroLoginForm.get('email').invalid" class="alert alert-danger">
+                Campo obrigatório
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Senha</mat-label>
+              <input formControlName="password" matInput type="password">
+              <mat-error *ngIf="cadastroLoginForm.get('password').invalid" class="alert alert-danger">
+                Campo obrigatório
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label *ngIf="selectedOption === 'padrao'; else dono">CPF</mat-label>
+            <ng-template #dono>
+              <mat-label>CNPJ</mat-label>
+            </ng-template>
+              <input formControlName="doc" matInput>
+              <mat-error *ngIf="cadastroLoginForm.get('doc').invalid" class="alert alert-danger">
+                Campo obrigatório
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Telefone</mat-label>
+              <input formControlName="phoneNumber" matInput>
+              <mat-error *ngIf="cadastroLoginForm.get('phoneNumber').invalid" class="alert alert-danger">
+                Campo obrigatório
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Data de nascimento</mat-label>
+              <input formControlName="birthdate" matInput>
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>CEP</mat-label>
+              <input formControlName="zipCode" matInput>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Rua</mat-label>
+              <input formControlName="street" matInput>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Número</mat-label>
+              <input formControlName="streetNumber" matInput>
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Estado</mat-label>
+              <input formControlName="state" matInput>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Cidade</mat-label>
+              <input formControlName="city" matInput>
+          </mat-form-field>
+
+          <mat-form-field class="camposCadastroUsuario">
+            <mat-label>Bairro</mat-label>
+              <input formControlName="neighborhood" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+    <button mat-button class="buttonLogin" (click)="cadastrarTipoUsuario()" *ngIf="tipoSelecionado">Cadastre-se</button>
+  </mat-card>
+</div>

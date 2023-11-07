@@ -1,0 +1,41 @@
+
+<div style="display: flex;flex-direction: row;justify-content: space-between;margin: 20px;" *ngIf="donoDoCentro === true">
+  <button mat-button class="buttonCadastros" (click)="openModalCadastrarQuadras()">Cadastrar quadras</button>
+  <h1 style="font-size: 40px;  font-weight: 600;  color: #8c2b2b;">QUADRAS</h1>
+  <button mat-button  class="buttonCadastros" [routerLink]="['/inventario', idCentro]">Gerenciar inventário</button>
+</div>
+<div  *ngIf="donoDoCentro === false" style="display: flex;flex-direction: row;justify-content: space-between;margin: 20px;">
+  <button mat-button (click)="openModalConsultarInventario()" class="buttonCadastros">Consultar inventário</button>
+  <h1 style="font-size: 40px;  font-weight: 600;  color: #8c2b2b;">QUADRAS</h1>
+  <div></div>
+</div>
+<mat-grid-list cols="4" rowHeight="450px" gutterSize="16px">
+  <mat-grid-tile *ngFor="let item of dataQuadras.sportsCourts">
+    <mat-card class="cardCentroEsportivo">
+      <mat-card-title class="tituloCardCentro">
+        <mat-icon fontIcon="delete" (click)="excluirQuadra(item.id)" matTooltip="Excluir quadra" matTooltipPosition="above" *ngIf="donoDoCentro === true"></mat-icon>
+        {{ item.name }}
+        <mat-icon fontIcon="edit" (click)="openModalEditarQuadras(item.id)" matTooltip="Editar quadra" matTooltipPosition="above"  *ngIf="donoDoCentro === true"></mat-icon>
+      </mat-card-title>
+      <mat-card-content style="display: flex; flex-direction: column; width: 90%;">
+        <div class="linhaCardInfos" style="margin-left: 10px;">
+          <span>Modalidade: {{item.modality}}</span>
+        </div>
+        <div class="linhaCardInfos" style="margin-left: 10px;">
+          <span>Descrição: {{item.description}}</span>
+        </div>
+        <div class="linhaCardInfos" style="margin-left: 10px;">
+          <span>Valor hora: {{item.amount}}</span>
+        </div>
+        <div class="linhaCardInfos" style="margin-left: 10px;">
+          <span>Tamanho da quadra : {{item.size}}</span>
+        </div>
+        <img src="{{item.photo_urls}}" style="height: 150px; width: auto;"/>
+
+      </mat-card-content>
+      <button mat-button class="buttonAgendar" (click)="openModalAgendarHorario(item)" *ngIf="donoDoCentro === false && perfilUsuario === 'USER'">Reservar quadra</button>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
