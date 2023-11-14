@@ -21,7 +21,7 @@
       <div style="display: flex;flex-direction: row;">
         <mat-form-field class="camposCadastroQuadra">
           <mat-label>Telefone de contato</mat-label>
-            <input formControlName="contactNumber" matInput>
+            <input formControlName="contactNumber" matInput mask="(00) 00000-0000">
             <mat-error *ngIf="cadastroCentro.get('contactNumber').invalid" class="alert alert-danger">
               Campo obrigatório
             </mat-error>

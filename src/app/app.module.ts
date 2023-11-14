@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -98,7 +99,7 @@ import { UsuarioMaisRentavelComponent } from './modais/relatorios/usuario-mais-r
     MatRippleModule,
     MatButtonModule,
     CdkAccordionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ],
   imports: [BrowserAnimationsModule, HttpClientModule],
 })
@@ -129,7 +130,7 @@ export class Material {}
     ReservarComponent,
     RecebidoComponent,
     AgendamentosComponent,
-    UsuarioMaisRentavelComponent
+    UsuarioMaisRentavelComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,9 +140,11 @@ export class Material {}
     Material,
     ReactiveFormsModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideNgxMask()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -47,13 +47,13 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Número de Telefone</mat-label>
-          <input formControlName="phoneNumber" matInput placeholder="Número de Telefone">
+          <input formControlName="phoneNumber" matInput placeholder="Número de Telefone" mask="(00) 00000-0000">
           <mat-error *ngIf="cadastroForm.get('phoneNumber').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Data de Nascimento</mat-label>
-          <input formControlName="birthdate" matInput placeholder="Data de Nascimento">
+          <input formControlName="birthdate" matInput placeholder="Data de Nascimento" mask="00/00/0000">
         </mat-form-field>
       <div></div>
 
