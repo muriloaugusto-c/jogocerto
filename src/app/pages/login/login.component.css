@@ -1,42 +1,121 @@
-.estruturaLogin{
+.estruturaLogin {
+  background: url(https://i.pinimg.com/originals/1a/6d/a3/1a6da34fbc47ecfa69e7d365c81217df.jpg) -50px /cover no-repeat;
+  background-size: 45%;
+  background-color: #FCCC06; /* Substitua pela cor desejada */
+  height: 100vh;
+  margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.cardLogin{
-  height: 500px;
-  width: 600px;
+.cardLogin {
+  height: 350px;
+  width: 400px;
+  border: 2px;
+  border-radius: 15px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(550px);
+  background: linear-gradient(to bottom, #14213d, #000000);
+  position: absolute;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.tituloLogin {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.camposLogin {
+  width: 100%;
   display: flex;
   align-items: center;
-  border: 5px solid #8C2B2B;
-  border-radius: 8px;
+  justify-content: space-between;
+
 }
 
-.tituloLogin{
-  font-size: 32px;
-  font-weight: 500;
+.camposLogin mat-form-field {
+  width: calc(100% - 24px);
 }
 
-.camposLogin{
-  width: 350px;
-  margin-top:20px;
+.mat-icon {
+  color: rgba(0, 0, 0, 0.54);
 }
 
-.buttonLogin{
-  width: 250px;
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonLogin {
+  width: 100%;
   height: 45px;
-  border: 2px solid #3f51b5;
-  color:#3f51b5 !important;
+  background-color: #fff;
+  color: #3f51b5;
+  border: none;
   border-radius: 8px;
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 10px;
+
+  transition: background-color 0.4s linear, color 0.4s linear !important;
 }
 
-.textCadastro{
+.buttonLogin:hover {
+  background: #14ED3E !important;
+  color: #fff !important;
+}
+
+.textCadastro {
   text-decoration: underline;
-  margin-top: 15px;
+  color: #fff;
   cursor: pointer;
-  color: #3f51b5;
+  margin-top: 15px; /* Adiciona um espaçamento acima do link */
+}
+
+
+/* Para telas menores, tablet em modo retrato e telefones */
+@media (max-width: 768px) {
+  .cardLogin {
+    height: 350px; /* Reduz a altura do cartão */
+    width: 80%; /* Define a largura para 80% da tela */
+    border-radius: 10px; /* Reduz o raio da borda */
+  }
+
+  .tituloLogin {
+    font-size: 20px; /* Reduz o tamanho da fonte do título */
+  }
+
+  .camposLogin mat-form-field {
+    width: calc(100% - 12px); /* Ajusta o tamanho dos campos */
+  }
+}
+
+/* Para telas menores, modo paisagem de tablets e telefones */
+@media (max-width: 1024px) and (orientation: landscape) {
+  /* Aqui você pode adicionar mais ajustes para telas maiores, porém ainda consideradas como dispositivos móveis */
+}
+
+/* Para telas maiores, como PCs e laptops */
+@media (min-width: 1025px) {
+  .estruturaLogin {
+    height: 100vh;
+  }
+
+  .cardLogin {
+    height: 350px;
+    width: 400px;
+  }
 }

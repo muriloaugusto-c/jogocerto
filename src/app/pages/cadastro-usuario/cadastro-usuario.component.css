@@ -1,52 +1,72 @@
-.estruturaLogin{
-  display: flex;
+/* cadastro-usuario.component.css background: linear-gradient(to bottom, #18022d, #000000) !important; */
+.mat-stepper-horizontal {
+  display: block;
+  max-width: 100vh;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #18022d, #000000) !important;
+  padding: 20px;
+  border-radius: 15px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  margin: 20px;
+  background-color: var(--mdc-filled-text-field-container-color);
+  padding: 5px;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  border-radius: 10px;
+  display: flex;
+  width: 250px;
 }
 
-.cardLogin{
-  height: auto;
-  width: 800px;
+
+.mat-horizontal-stepper-content:not(.mat-horizontal-stepper-content-inactive) {
+  visibility: inherit !important;
+  display: block;
+}
+
+.mat-mdc-radio-button.mat-accent {
+  --mdc-radio-disabled-selected-icon-color: #000;
+  --mdc-radio-disabled-unselected-icon-color: #000;
+  --mdc-radio-unselected-hover-icon-color: #212121;
+  --mdc-radio-unselected-icon-color: rgba(255, 255, 255, 0.54);
+  --mdc-radio-unselected-pressed-icon-color: rgba(255, 255, 255, 0.54);
+  --mdc-radio-selected-focus-icon-color: #9a2bcc;
+  --mdc-radio-selected-hover-icon-color: #9a2bcc;
+  --mdc-radio-selected-icon-color: #9a2bcc;
+  --mdc-radio-selected-pressed-icon-color: #9a2bcc;
+  --mat-radio-ripple-color: #000;
+  --mat-radio-checked-ripple-color: #9a2bcc;
+  --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+  margin: 0 25px;
+  position: relative;
+}
+
+
+/* Estilo para a div que contém os botões */
+.div-container {
   display: flex;
   align-items: center;
-  border: 5px solid #8C2B2B;
-  border-radius: 8px;
+  height: 25px;
+  margin-top: 15px;
 }
 
-.tituloLogin{
-  font-size: 32px;
-  font-weight: 500;
+form .form1{
+  display: block;
+  margin: 0 auto !important;
+  width: 50%;
 }
 
-
-.camposCadastroUsuario{
-  width: auto;
-  margin: 10px 10px 10px 0;
+.mdc-form-field>label {
+  color: #fff;
 }
 
-.buttonLogin{
-  width: 250px;
-  height: 45px;
-  border: 2px solid #3f51b5;
-  color:#3f51b5 !important;
-  border-radius: 8px;
-  font-size: 16px;
-  margin-top: 20px;
-  margin-bottom: 25px;
+.mat-stepper-horizontal-line {
+  border-top-color: #fff !important;
 }
 
-.radioButton{
-  --mdc-radio-disabled-selected-icon-color: #000;
-    --mdc-radio-disabled-unselected-icon-color: #000;
-    --mdc-radio-unselected-hover-icon-color: #212121;
-    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
-    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
-    --mdc-radio-selected-focus-icon-color: #8C2B2B;
-    --mdc-radio-selected-hover-icon-color: #8C2B2B;
-    --mdc-radio-selected-icon-color: #8C2B2B;
-    --mdc-radio-selected-pressed-icon-color: #8C2B2B;
-    --mat-radio-ripple-color: #000;
-    --mat-radio-checked-ripple-color: #8C2B2B;
-    --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+.mat-step-text-label {
+  color: #fff;
 }

@@ -1,43 +1,38 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-cadastro-usuario',
   templateUrl: './cadastro-usuario.component.html',
-  styleUrls: ['./cadastro-usuario.component.css']
+  styleUrls: ['./cadastro-usuario.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CadastroUsuarioComponent implements OnInit {
-  cadastroLoginForm: FormGroup | any;
-  tipoUsuarioForm: FormGroup | any;
-  tipoSelecionado = false;
+  cadastroForm: FormGroup | any;
+  etapaAtual: number = 0; // Adicionando a propriedade etapaAtual
   selectedOption: string | any;
-  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private cookieService: CookieService,
     private http: HttpClient,
     private router: Router,
     private _snackBar: MatSnackBar
-  ){
+  ) {}
 
-  }
   ngOnInit() {
-    this.cadastrarUsuario()
+    this.criarFormulario();
   }
 
-  submitForm() {
-    this.submitted = true;
-    this.tipoSelecionado = true;
-    console.log(this.selectedOption)
-  }
-
-  cadastrarUsuario() {
-    this.cadastroLoginForm = this.formBuilder.group({
+  criarFormulario() {
+    this.cadastroForm = this.formBuilder.group({
+      selectedOption: ['', Validators.required],
       name: ['', Validators.required],
       email: ['', Validators.required],
       doc: ['', Validators.required],
@@ -49,72 +44,54 @@ export class CadastroUsuarioComponent implements OnInit {
       zipCode: [''],
       state: [''],
       city: [''],
-      neighborhood: ['']
-    })
+      neighborhood: [''],
+    });
   }
 
-  cadastrarTipoUsuario(){
-    if(this.selectedOption === 'padrao'){
-      this.cadastroUsuarioNormal();
-    }else{
-      this.cadastroDono();
+  prosseguirEtapa(etapa: number): void {
+    if (etapa === 0 && this.cadastroForm.get('selectedOption').valid) {
+      this.etapaAtual = 1;
+    } else if (etapa === 1 && this.cadastroForm.valid) {
+      this.etapaAtual = 2;
+    } else if (etapa === 2 && this.cadastroForm.valid) {
+      this.enviarCadastro();
     }
+  }
+
+  onSelectionChange(event: any) {
+    this.selectedOption = event.value;
   }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
+  enviarCadastro() {
+    const endpoint = this.selectedOption === 'padrao' ? 'users' : 'owners';
 
-  cadastroUsuarioNormal(){
-    if (this.cadastroLoginForm.valid) {
-      const headers = {'Content-Type': 'application/json' };
-      const body = Object.assign({}, this.cadastroLoginForm.value);
-      console.log(body)
+    if (this.cadastroForm.valid) {
+      const headers = { 'Content-Type': 'application/json' };
+      const body = Object.assign({}, this.cadastroForm.value);
+
       this.http
-        .post<any>('https://rightgame-api.onrender.com/users', body, {headers})
-          .subscribe({
-            next: (data: any) => {
-              console.log(data)
-              this._snackBar.open('Usuário cadastrado com sucesso', 'Fechar', {
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-              });
-              this.router.navigate(['/login']);
-            },
-            error: (error: any) => {
-              this._snackBar.open('Falha ao cadastrar usuário', 'Fechar', {
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-              });
-              console.log('There was an error!', error);
-            },
-          });
+        .post<any>(`https://rightgame-api.onrender.com/${endpoint}`, body, {
+          headers,
+        })
+        .subscribe({
+          next: (data: any) => {
+            this._snackBar.open('Usuário cadastrado com sucesso', 'Fechar', {
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+            });
+            this.router.navigate(['/login']);
+          },
+          error: (error: any) => {
+            this._snackBar.open('Falha ao cadastrar usuário', 'Fechar', {
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+            });
+            console.log('There was an error!', error);
+          },
+        });
     }
   }
-
-  cadastroDono(){
-    if (this.cadastroLoginForm.valid) {
-      const headers = {'Content-Type': 'application/json' };
-      const body = Object.assign({}, this.cadastroLoginForm.value);
-      this.http
-        .post<any>('https://rightgame-api.onrender.com/owners', body, {headers})
-          .subscribe({
-            next: (data: any) => {
-              this._snackBar.open('Usuário dono de centro cadastrado com sucesso', 'Fechar', {
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-              });
-              this.router.navigate(['/login']);
-            },
-            error: (error: any) => {
-              this._snackBar.open('Falha ao cadastrar usuário dono de centro', 'Fechar', {
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-              });
-              console.log('There was an error!', error);
-            },
-          });
-    }
-  }
-
 }

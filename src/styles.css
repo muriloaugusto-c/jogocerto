@@ -1,7 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-image: url(../src/assets/images/quadra.jpg); background-size: cover; /* Redimensiona a imagem para cobrir toda a tela */
-  background-attachment: fixed; /* Mantém a imagem fixa na tela */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: fantasy;
+  background-color: #fff;
 }

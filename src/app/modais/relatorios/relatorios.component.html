@@ -4,24 +4,27 @@
   </button>
 </h1>
 
-<div mat-dialog-content style="padding-right: 0 !important; padding-left: 0 !important; width: 600px;">
+<div mat-dialog-content style="padding-right: 0 !important; padding-left: 0 !important; width: 800px;">
   <div style="display: flex; flex-direction: column; color:#000;">
-    <div style="display: flex; flex-direction: column; width: auto; height: auto; border: 2px solid #8C2B2B; border-radius: 8px; color: #000; padding: 10px;margin: 15px 50px;">
+    <div style="display: flex; flex-direction: column; width: auto; height: auto; border: 2px solid #E5E5E5; border-radius: 8px; color: #000; padding: 10px;margin: 15px 50px; background-color: #E5E5E5;">
       <span style="font-size: 18px;font-weight: 500;">Últimos 10 agendamentos:</span>
+
       <div *ngFor="let solicitacoes of dataUltimos10Requisicoes;" style="margin: 5px 16px 15px 16px">
-        <div style="display: flex; flex-direction: column; width: auto; height: auto; border-bottom: 2px solid #8C2B2B; color: #000; padding: 10px">
-          <h3 style="margin-bottom: 0; font-weight: 500;">Status: {{solicitacoes.status}}</h3>
-          <h3 style="font-weight: 500; margin-bottom: 5px;">Informações do local</h3>
-          <span style="margin-right: 10px;">Nome da quadra: {{solicitacoes.sportsCourt.name}}</span>
-          <span style="margin-right: 10px;">Modalidade: {{solicitacoes.sportsCourt.modality}}</span>
-          <span style="margin-right: 10px;">Valor: {{solicitacoes.amount}}</span>
-          <span style="margin-right: 10px;">Início: {{solicitacoes.start_time}}</span>
-          <span style="margin-right: 10px;">Fim: {{solicitacoes.start_time}}</span>
+        <div style="display: flex; flex-direction: column; width: auto; height: auto; border-bottom: 2px solid #14213D; color: #000; padding: 10px;">
+          <h3 style="margin-bottom: 0; font-weight: 500; height: 100%; display: flex;" [style.color]="getColorByStatus(solicitacoes.status)">
+            Status: {{ solicitacoes.status }}
+            <mat-icon [style.color]="getColorByStatus(solicitacoes.status)" style="margin-left: 5px;">
+              {{ getIconByStatus(solicitacoes.status) }}
+            </mat-icon>
+          </h3>
+          <h3 style="font-weight: 500; margin-bottom: 5px; font-weight: 600; color: #14213D;">Informações do local</h3>
+          <span style="margin-right: 10px;">Nome da quadra: {{ solicitacoes.sportsCourt.name }}</span>
+          <span style="margin-right: 10px;">Modalidade: {{ solicitacoes.sportsCourt.modality }}</span>
+          <span style="margin-right: 10px;">Valor: {{ solicitacoes.amount }}</span>
+          <span style="margin-right: 10px;">Início: {{ solicitacoes.start_time }}</span>
+          <span style="margin-right: 10px;">Fim: {{ solicitacoes.end_time }}</span>
         </div>
       </div>
     </div>
-
   </div>
-
-
 </div>

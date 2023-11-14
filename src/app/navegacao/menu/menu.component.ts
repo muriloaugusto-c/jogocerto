@@ -13,10 +13,10 @@ import { UsuarioMaisRentavelComponent } from 'src/app/modais/relatorios/usuario-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
-export class MenuComponent implements OnInit{
-  logado: any
+export class MenuComponent implements OnInit {
+  logado: any;
   nomeUsuario: any;
   telaRelatorio: any;
   relatorios: any;
@@ -25,23 +25,23 @@ export class MenuComponent implements OnInit{
     private cookieService: CookieService,
     //private http: HttpClient,
     private router: Router,
-    public dialog: MatDialog,
-  ){}
+    public dialog: MatDialog
+  ) {}
   dialogConfig = new MatDialogConfig();
 
   ngOnInit(): void {
-    this.nomeUsuario = this.cookieService.get('nomeUsuario')
-    if(this.cookieService.check('tokenApi')){
+    this.nomeUsuario = this.cookieService.get('nomeUsuario');
+    if (this.cookieService.check('tokenApi')) {
       this.logado = true;
-    }else{
+    } else {
       this.logado = false;
     }
 
-    if(this.cookieService.get('perfilLogin') === 'USER'){
+    if (this.cookieService.get('perfilLogin') === 'USER') {
       this.telaRelatorio = true;
     }
 
-    if(this.cookieService.get('perfilLogin') === 'OWNER'){
+    if (this.cookieService.get('perfilLogin') === 'OWNER') {
       this.relatorios = true;
     }
   }
@@ -65,31 +65,31 @@ export class MenuComponent implements OnInit{
     this.dialog.open(RecebidoComponent, this.dialogConfig);
   }
 
-  openModalAgendamentos(): void{
+  openModalAgendamentos(): void {
     this.dialogConfig.disableClose = true;
     this.dialog.open(AgendamentosComponent, this.dialogConfig);
   }
 
-  openModalUsuarioRentavel(): void{
+  openModalUsuarioRentavel(): void {
     this.dialogConfig.disableClose = true;
     this.dialog.open(UsuarioMaisRentavelComponent, this.dialogConfig);
   }
 
-
-  redirect(){
+  redirect() {
     this.router.navigate(['/']);
   }
 
-  logout(){
-    this.cookieService.delete('tokenApi')
-    this.cookieService.delete('perfilLogin')
-    this.cookieService.delete('nomeUsuario')
-    this.cookieService.delete('idUsuario')
+  logout() {
+    this.cookieService.delete('tokenApi');
+    this.cookieService.delete('perfilLogin');
+    this.cookieService.delete('nomeUsuario');
+    this.cookieService.delete('idUsuario');
     this.router.navigate(['/']);
     this.logado = false;
+    this.redirect();
   }
 
-  acessarLogin(){
+  acessarLogin() {
     this.router.navigate(['/login']);
   }
 }

@@ -1,7 +1,52 @@
-.topBar{
-  background-color: #8C2B2B;
+.topBar {
+  background-color: #14213D;
+; /* Alterei a cor de fundo */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionei uma sombra sutil */
+}
+
+.logo {
+  color: #e5e5e5;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .fill-remaining-space {
-  flex: 1 1 auto
+  flex: 1 1 auto;
+}
+
+.login-button {
+  font-size: 18px;
+  border: 1px solid #14213D;
+  color: #e5e5e5 !important; /* Cor do texto do botão */
+  background-color: #14213D; /* Cor de fundo do botão (roxo) */
+  border-radius: 4px;
+  padding: 8px 16px;
+  transition: background-color 0.8s, color 0.8s;
+}
+
+.login-button:hover {
+  background-color: #e5e5e5; /* Alteração de cor de fundo ao passar o mouse */
+  color: #14213D !important; /* Alteração de cor do texto ao passar o mouse */
+}
+
+.user-menu {
+  color: #e1d9ef; /* Cor do texto do usuário */
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  margin-right: 12px; /* Ajuste o espaçamento entre o ícone e o texto */
+  font-size: 28px; /* Ajuste o tamanho do ícone */
+}
+
+.user-name {
+  font-weight: bold; /* Adicione negrito para um melhor destaque */
+  color: #fff
+}
+
+
+mat-icon {
+  color: #fff;
 }

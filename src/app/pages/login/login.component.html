@@ -1,23 +1,26 @@
 <div class="estruturaLogin">
   <mat-card class="cardLogin">
-    <div style="margin-top: 50px;">
-      <span class="tituloLogin">
-        Realize o login no sistema
-      </span>
-    </div>
-    <form [formGroup]="loginForm">
-      <div style="display: flex;flex-direction: column; margin-top: 60px;">
+    <div class="content">
+      <span class="tituloLogin">Realizar login</span>
+      <form [formGroup]="loginForm" class="formLogin">
         <mat-form-field class="camposLogin">
           <mat-label>E-mail</mat-label>
-            <input formControlName="email" matInput>
+          <input formControlName="email" matInput required>
+          <mat-icon matSuffix class="mat-icon">email</mat-icon>
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">
+          </mat-error>
+
         </mat-form-field>
         <mat-form-field class="camposLogin">
           <mat-label>Senha</mat-label>
-            <input type="password" formControlName="password" matInput>
+          <input type="password" formControlName="password" matInput required>
+          <mat-icon matSuffix class="mat-icon">lock</mat-icon>
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          </mat-error>
         </mat-form-field>
-      </div>
-    </form>
-    <button mat-button (click)="login()" class="buttonLogin">Login</button>
-    <a class="textCadastro" (click)="linkCadastro()">Não possui uma conta? Cadastre-se</a>
+        <button mat-raised-button (click)="login()" class="buttonLogin">Login</button>
+        <a class="textCadastro" (click)="linkCadastro()">Não possui uma conta? Cadastre-se</a>
+      </form>
+    </div>
   </mat-card>
 </div>

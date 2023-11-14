@@ -1,46 +1,112 @@
-.mat-grid-list {
-  margin: 16px; /* Margem externa da grade de colunas e linhas */
+/* Reset de estilos */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
-mat-card {
-  margin: 8px; /* Margem entre os cards */
-}
-
-.buttonCadastros{
-  border: 2px solid #000;
-  height: 50px;
-  background-color: #8C2B2B;
-  color: #FFF;
-  border-radius: 8px;
-}
-
-.cardCentroEsportivo{
-  height: auto;
+/* Estilos do contêiner da página */
+.page-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  border: 5px solid #8C2B2B;
-  border-radius: 8px;
-  width: 400px;
-  height: 400px;
 }
 
-.tituloCardCentro{
+.tituloCardCentro[_ngcontent-ng-c4028146540] {
+  display: flex;
+  font-weight: 600;
+  color: #14213D;
+  font-size: 26px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.header {
   display: flex;
   flex-direction: row;
-  width: 90%;
   justify-content: space-between;
+  margin: 200px 0;
+}
+
+
+.buttonCadastros {
+  background-color: #14213d;
+  color: #fff !important;
+  font-size: 18px;
+}
+
+/* Estilos do título h1 da página */
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Estilos dos cards de quadras */
+.mat-card {
+  width: 90%;
+  max-width: 400px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  background: #fff;
+  border-radius: 15px;
+}
+
+/* Estilos do título do card */
+.tituloCardCentro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+/* Estilos do conteúdo do card */
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 10px;
+}
+
+/* Estilos das informações no card */
+.linhaCardInfos {
+  margin-left: 10px;
+}
+
+/* Estilos da imagem no card */
+.mat-card-content img {
+  height: 150px;
+  width: auto;
+}
+
+/* Estilos do botão de reserva */
+.buttonAgendar {
+  background-color: #14213d;
+  color: #fff;
+  font-size: 18px;
   margin-top: 10px;
 }
 
-.linhaCardInfos{
-  display: flex;
-  flex-direction: row;
-  margin: 5px 0;
-}
 
-.buttonAgendar{
-  width: 250px;
-  margin-top: 20px;
-  border-radius: 8px;
-  border: 1px solid #8C2B2B;
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttonCadastros {
+    margin-top: 10px;
+  }
+
+  .mat-card {
+    max-width: 400px;
+  }
+
+  .mat-card-content img {
+    width: 100%;
+    height: auto;
+  }
 }
