@@ -10,17 +10,17 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  margin: 20px;
-  background-color: var(--mdc-filled-text-field-container-color);
-  padding: 5px;
-  justify-content: center;
-  border-radius: 10px;
-  display: flex;
-  width: 250px;
+.test{
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    margin: 20px;
+    background-color: var(--mdc-filled-text-field-container-color);
+    padding: 5px;
+    justify-content: center;
+    border-radius: 10px;
+    display: flex;
+    width: 250px;
+  }
 }
-
 
 .mat-horizontal-stepper-content:not(.mat-horizontal-stepper-content-inactive) {
   visibility: inherit !important;

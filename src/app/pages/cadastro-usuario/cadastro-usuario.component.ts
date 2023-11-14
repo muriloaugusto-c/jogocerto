@@ -106,6 +106,7 @@ export class CadastroUsuarioComponent implements OnInit {
             this._snackBar.open('Usuário cadastrado com sucesso', 'Fechar', {
               horizontalPosition: this.horizontalPosition,
               verticalPosition: this.verticalPosition,
+              duration: 3000,
             });
             this.acessarLogin();
           },
@@ -113,6 +114,7 @@ export class CadastroUsuarioComponent implements OnInit {
             this._snackBar.open('Falha ao cadastrar usuário', 'Fechar', {
               horizontalPosition: this.horizontalPosition,
               verticalPosition: this.verticalPosition,
+              duration: 3000,
             });
             console.log('There was an error!', error);
           },

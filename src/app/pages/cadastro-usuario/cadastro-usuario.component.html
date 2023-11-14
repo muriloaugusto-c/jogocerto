@@ -20,38 +20,38 @@
     <form [formGroup]="cadastroForm">
       <ng-template matStepLabel>Dados do Usuário</ng-template>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Nome</mat-label>
           <input formControlName="name" matInput placeholder="Nome">
           <mat-error *ngIf="cadastroForm.get('name').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>E-mail</mat-label>
           <input formControlName="email" matInput placeholder="E-mail">
           <mat-error *ngIf="cadastroForm.get('email').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>{{ selectedOption === 'padrao' ? 'CPF' : 'CNPJ' }}</mat-label>
           <input formControlName="doc" matInput placeholder="Informe o {{ selectedOption === 'padrao' ? 'CPF' : 'CNPJ' }}">
 
           <mat-error *ngIf="cadastroForm.get('doc').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Senha</mat-label>
           <input formControlName="password" matInput type="password" placeholder="Senha">
           <mat-error *ngIf="cadastroForm.get('password').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Número de Telefone</mat-label>
           <input formControlName="phoneNumber" matInput placeholder="Número de Telefone" mask="(00) 00000-0000">
           <mat-error *ngIf="cadastroForm.get('phoneNumber').invalid">Campo obrigatório</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Data de Nascimento</mat-label>
           <input formControlName="birthdate" matInput placeholder="Data de Nascimento" mask="00/00/0000">
         </mat-form-field>
@@ -72,32 +72,32 @@
     <!-- Verifique se a etapaAtual é 2 antes de exibir os campos de endereço -->
     <ng-container *ngIf="etapaAtual === 2">
       <div fxLayout="column" fxLayoutGap="15px">
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>CEP</mat-label>
           <input matInput formControlName="zipCode" placeholder="Informe o CEP" (change)="buscarCep()">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Rua</mat-label>
           <input matInput formControlName="street" placeholder="Informe a rua">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Número</mat-label>
           <input matInput formControlName="streetNumber" placeholder="Informe o número">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Estado</mat-label>
           <input matInput formControlName="state" placeholder="Informe o estado">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Cidade</mat-label>
           <input matInput formControlName="city" placeholder="Informe a cidade">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="test" appearance="fill">
           <mat-label>Bairro</mat-label>
           <input matInput formControlName="neighborhood" placeholder="Informe o bairro">
         </mat-form-field>
