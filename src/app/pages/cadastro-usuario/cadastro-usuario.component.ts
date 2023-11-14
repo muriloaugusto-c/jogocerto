@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { CepService } from 'src/app/service/cep.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
@@ -23,7 +24,8 @@ export class CadastroUsuarioComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private cepService: CepService
   ) {}
 
   ngOnInit() {
@@ -46,6 +48,25 @@ export class CadastroUsuarioComponent implements OnInit {
       city: [''],
       neighborhood: [''],
     });
+  }
+
+  buscarCep() {
+    const cep = this.cadastroForm.get('zipCode').value;
+    if (cep && cep.length === 8) {
+      this.cepService.getCepDetails(cep).subscribe(
+        (data: any) => {
+          this.cadastroForm.patchValue({
+            state: data.uf,
+            city: data.localidade,
+            neighborhood: data.bairro,
+            street: data.logradouro,
+          });
+        },
+        (error: any) => {
+          console.error('Erro ao buscar CEP:', error);
+        }
+      );
+    }
   }
 
   prosseguirEtapa(etapa: number): void {

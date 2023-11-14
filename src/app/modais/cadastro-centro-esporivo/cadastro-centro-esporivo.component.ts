@@ -8,6 +8,7 @@ import {
 } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { CepService } from 'src/app/service/cep.service';
 
 @Component({
   selector: 'app-cadastro-centro-esporivo',
@@ -24,7 +25,8 @@ export class CadastroCentroEsporivoComponent {
     private cookieService: CookieService,
     private http: HttpClient,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private cepService: CepService
   ) {}
 
   ngOnInit() {
@@ -48,6 +50,25 @@ export class CadastroCentroEsporivoComponent {
       city: ['', Validators.required],
       neighborhood: [''],
     });
+  }
+
+  buscarCep() {
+    const cep = this.cadastroCentro.get('zipCode').value;
+    if (cep && cep.length === 8) {
+      this.cepService.getCepDetails(cep).subscribe(
+        (data: any) => {
+          this.cadastroCentro.patchValue({
+            state: data.uf,
+            city: data.localidade,
+            neighborhood: data.bairro,
+            street: data.logradouro,
+          });
+        },
+        (error: any) => {
+          console.error('Erro ao buscar CEP:', error);
+        }
+      );
+    }
   }
 
   onFileSelected(event: any) {

@@ -73,6 +73,11 @@
     <ng-container *ngIf="etapaAtual === 2">
       <div fxLayout="column" fxLayoutGap="15px">
         <mat-form-field appearance="fill">
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="zipCode" placeholder="Informe o CEP" (change)="buscarCep()">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
           <mat-label>Rua</mat-label>
           <input matInput formControlName="street" placeholder="Informe a rua">
         </mat-form-field>
@@ -80,11 +85,6 @@
         <mat-form-field appearance="fill">
           <mat-label>Número</mat-label>
           <input matInput formControlName="streetNumber" placeholder="Informe o número">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>CEP</mat-label>
-          <input matInput formControlName="zipCode" placeholder="Informe o CEP">
         </mat-form-field>
 
         <mat-form-field appearance="fill">

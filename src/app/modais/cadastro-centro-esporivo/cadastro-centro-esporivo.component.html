@@ -46,9 +46,9 @@
       </div>
 
       <div style="display: flex;flex-direction: row;">
-        <mat-form-field class="camposCadastroQuadra">
+        <mat-form-field class="camposCadastroQuadra" appearance="fill">
           <mat-label>CEP</mat-label>
-            <input formControlName="zipCode" matInput>
+          <input formControlName="zipCode" matInput (change)="buscarCep()" placeholder="Informe o CEP">
         </mat-form-field>
       </div>
 
