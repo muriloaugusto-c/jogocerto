@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;

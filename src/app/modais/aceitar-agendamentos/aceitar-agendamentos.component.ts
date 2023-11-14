@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -47,7 +47,6 @@ export class AceitarAgendamentosComponent implements OnInit {
   }
 
   getAgendamentos() {
-    console.log('a');
     const token = this.cookieService.get('tokenApi');
     const headers = {
       'Content-Type': 'application/json',
@@ -61,7 +60,6 @@ export class AceitarAgendamentosComponent implements OnInit {
       )
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.dataAgendamentos = data.reservations.map((item: any) => ({
             ...item,
             start_time: this.formatDate.formatarData(item.start_time),

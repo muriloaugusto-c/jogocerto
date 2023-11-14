@@ -32,12 +32,12 @@ export class CadastroUsuarioComponent implements OnInit {
 
   criarFormulario() {
     this.cadastroForm = this.formBuilder.group({
-      selectedOption: ['', Validators.required],
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      doc: ['', Validators.required],
-      password: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      selectedOption: [''],
+      name: [''],
+      email: [''],
+      doc: [''],
+      password: [''],
+      phoneNumber: [''],
       birthdate: [''],
       street: [''],
       streetNumber: [''],
@@ -62,6 +62,10 @@ export class CadastroUsuarioComponent implements OnInit {
     this.selectedOption = event.value;
   }
 
+  acessarLogin() {
+    this.router.navigate(['/login']);
+  }
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
@@ -82,7 +86,7 @@ export class CadastroUsuarioComponent implements OnInit {
               horizontalPosition: this.horizontalPosition,
               verticalPosition: this.verticalPosition,
             });
-            this.router.navigate(['/login']);
+            this.acessarLogin();
           },
           error: (error: any) => {
             this._snackBar.open('Falha ao cadastrar usuário', 'Fechar', {

@@ -33,7 +33,7 @@
         <img src="{{item.photo_urls}}" style="height: 200px; width: auto;"/>
 
       </mat-card-content>
-      <button mat-button class="buttonAgendar" (click)="openModalAgendarHorario(item)" *ngIf="donoDoCentro === false && perfilUsuario === 'USER'">Reservar quadra</button>
+      <button mat-button class="buttonAgendar" (click)="openModalAgendarHorario(item)" *ngIf="donoDoCentro === false">Reservar quadra</button>
     </mat-card>
   </mat-grid-tile>
 

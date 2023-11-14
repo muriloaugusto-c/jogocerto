@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -23,6 +23,7 @@ interface SelecaoHora {
 })
 export class AgendarHorarioComponent implements OnInit {
   horariosJaAgendados: any;
+  perfilUsuario: any;
   agendarHorario: FormGroup | any;
   @Input() idCentro: any;
   @Input() idQuadra: any;
@@ -39,6 +40,7 @@ export class AgendarHorarioComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.perfilUsuario = this.cookieService.get('perfilLogin');
     this.agendar();
     this.horariosAgendados();
   }
@@ -58,7 +60,6 @@ export class AgendarHorarioComponent implements OnInit {
     { value: '20:00:00', value2: '21:00:00', viewValue: '20:00 | 21:00' },
     { value: '21:00:00', value2: '22:00:00', viewValue: '21:00 | 22:00' },
     { value: '22:00:00', value2: '23:00:00', viewValue: '22:00 | 23:00' },
-    { value: '23:00:00', value2: '00:00:00', viewValue: '23:00 | 00:00' },
   ];
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -82,6 +83,10 @@ export class AgendarHorarioComponent implements OnInit {
   onDateChange(event: any) {
     const selectedHora = this.agendarHorario.get('startTime').value;
     this.updateTime(selectedHora);
+  }
+
+  acessarLogin() {
+    this.router.navigate(['/login']);
   }
 
   updateTime(selectedHora: SelecaoHora | any) {

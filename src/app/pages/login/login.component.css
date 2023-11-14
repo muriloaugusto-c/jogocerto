@@ -22,6 +22,10 @@
   position: absolute;
 }
 
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  padding-right: 0;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -29,6 +33,7 @@
   align-items: center;
   padding: 20px;
 }
+
 
 .tituloLogin {
   font-size: 24px;
