@@ -7,20 +7,38 @@ import { ReservarQuadraComponent } from './pages/reservar-quadra/reservar-quadra
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
 import { InventarioComponent } from './pages/inventario/inventario.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', component: LayoutComponent, children: [
-    { path: '', component: PaginaInicialComponent, title: 'Centros esportivos' },
-    { path: 'quadras/:id', component: QuadrasComponent, title: 'Quadras' },
-    { path: 'reservarQuadra/:id', component: ReservarQuadraComponent, title: 'Reservar quadra' },
-    { path: 'inventario/:id', component: InventarioComponent, title: 'Inventario do centro esportivo'}
-  ] },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: PaginaInicialComponent,
+        title: 'Centros esportivos',
+      },
+      { path: 'quadras/:id', component: QuadrasComponent, title: 'Quadras' },
+      {
+        path: 'reservarQuadra/:id',
+        component: ReservarQuadraComponent,
+        title: 'Reservar quadra',
+      },
+      {
+        path: 'inventario/:id',
+        component: InventarioComponent,
+        title: 'Inventario do centro esportivo',
+      },
+    ],
+  },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'cadastro', component: CadastroUsuarioComponent, title: 'Cadastro' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
